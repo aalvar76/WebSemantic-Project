@@ -1,0 +1,22 @@
+def hasBitcoinBlockheaderBlock():
+	return URIRef(blondieNS.hasBitcoinBlockheaderBlock)
+def hasBlockheaderBlock():
+	return URIRef(blondieNS.hasBlockheaderBlock)
+def hasEthereumBlockheaderBlock():
+	return URIRef(blondieNS.hasEthereumBlockheaderBlock)
+def hasEthereumPayloadBlock():
+	return URIRef(blondieNS.hasEthereumPayloadBlock)
+def hasEthereumTransactionPayload():
+	return URIRef(blondieNS.hasEthereumTransactionPayload)
+def hasPayloadBlock():
+	return URIRef(blondieNS.hasPayloadBlock)
+def hasBitcoinPayloadBlock():
+	return URIRef(blondieNS.hasBitcoinPayloadBlock)
+def hasOmmerEthereumPayload():
+	return URIRef(blondieNS.hasOmmerEthereumPayload)
+def hasTransactionPayload():
+	return URIRef(blondieNS.hasTransactionPayload)
+def hasBitcoinTransactionInput():
+	return URIRef(blondieNS.hasBitcoinTransactionInput)
+def hasBitcoinTransactionOutput():
+	return URIRef(blondieNS.hasBitcoinTransactionOutput)

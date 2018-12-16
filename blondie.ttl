@@ -1,0 +1,580 @@
+@prefix : <http://www.semanticblockchain.com/Blondie.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix blondie: <http://www.semanticblockchain.com/Blondie.owl#> .
+@base <http://www.semanticblockchain.com/Blondie.owl> .
+
+<http://www.semanticblockchain.com/Blondie.owl> rdf:type owl:Ontology ;
+                                                 rdfs:comment "Blockchain Ontology with Dynamic Extensibilty - An ontology for describing blockchain structure and related information"@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasBitcoinBlockheaderBlock
+blondie:hasBitcoinBlockheaderBlock rdf:type owl:ObjectProperty ,
+                                            owl:FunctionalProperty ,
+                                            owl:InverseFunctionalProperty ,
+                                            owl:AsymmetricProperty ,
+                                            owl:IrreflexiveProperty ;
+                                   rdfs:domain blondie:BitcoinBlock ;
+                                   rdfs:range blondie:BitcoinBlockheader .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasBitcoinPayloadBlock
+blondie:hasBitcoinPayloadBlock rdf:type owl:ObjectProperty ,
+                                        owl:FunctionalProperty ,
+                                        owl:IrreflexiveProperty ;
+                               rdfs:domain blondie:BitcoinBlock ;
+                               rdfs:range blondie:BitcoinPayload .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasBitcoinTransactionInput
+blondie:hasBitcoinTransactionInput rdf:type owl:ObjectProperty ,
+                                            owl:IrreflexiveProperty ;
+                                   rdfs:domain blondie:BitcoinTransaction ;
+                                   rdfs:range blondie:BitcoinTransactionInput .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasBitcoinTransactionOutput
+blondie:hasBitcoinTransactionOutput rdf:type owl:ObjectProperty ,
+                                             owl:IrreflexiveProperty ;
+                                    rdfs:domain blondie:BitcoinTransaction ;
+                                    rdfs:range blondie:BitcoinTransactionOutput .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasBlockheaderBlock
+blondie:hasBlockheaderBlock rdf:type owl:ObjectProperty ,
+                                     owl:FunctionalProperty ,
+                                     owl:InverseFunctionalProperty ,
+                                     owl:AsymmetricProperty ,
+                                     owl:IrreflexiveProperty ;
+                            rdfs:domain blondie:Block ;
+                            rdfs:range blondie:Blockheader .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasEthereumBlockheaderBlock
+blondie:hasEthereumBlockheaderBlock rdf:type owl:ObjectProperty ,
+                                             owl:FunctionalProperty ,
+                                             owl:InverseFunctionalProperty ,
+                                             owl:AsymmetricProperty ,
+                                             owl:IrreflexiveProperty ;
+                                    rdfs:domain blondie:EthereumBlock ;
+                                    rdfs:range blondie:EthereumBlockheader .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasEthereumPayloadBlock
+blondie:hasEthereumPayloadBlock rdf:type owl:ObjectProperty ,
+                                         owl:FunctionalProperty ,
+                                         owl:InverseFunctionalProperty ,
+                                         owl:AsymmetricProperty ,
+                                         owl:IrreflexiveProperty ;
+                                rdfs:domain blondie:EthereumBlock ;
+                                rdfs:range blondie:EthereumPayload .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasEthereumTransactionPayload
+blondie:hasEthereumTransactionPayload rdf:type owl:ObjectProperty ,
+                                               owl:FunctionalProperty ,
+                                               owl:InverseFunctionalProperty ,
+                                               owl:AsymmetricProperty ,
+                                               owl:IrreflexiveProperty ;
+                                      rdfs:domain blondie:EthereumPayload ;
+                                      rdfs:range blondie:EthereumTransaction .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasOmmerEthereumPayload
+blondie:hasOmmerEthereumPayload rdf:type owl:ObjectProperty ,
+                                         owl:FunctionalProperty ,
+                                         owl:IrreflexiveProperty ;
+                                rdfs:domain blondie:EthereumPayload ;
+                                rdfs:range blondie:EthereumOmmerBlockheader .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasPayloadBlock
+blondie:hasPayloadBlock rdf:type owl:ObjectProperty ,
+                                 owl:FunctionalProperty ,
+                                 owl:InverseFunctionalProperty ,
+                                 owl:AsymmetricProperty ,
+                                 owl:IrreflexiveProperty ;
+                        rdfs:domain blondie:Block ;
+                        rdfs:range blondie:Payload .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hasTransactionPayload
+blondie:hasTransactionPayload rdf:type owl:ObjectProperty ,
+                                       owl:FunctionalProperty ,
+                                       owl:IrreflexiveProperty ;
+                              rdfs:domain blondie:Payload ;
+                              rdfs:range blondie:Transaction .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticblockchain.com/Blondie.owl#addressEthereumAccount
+blondie:addressEthereumAccount rdf:type owl:DatatypeProperty ;
+                               rdfs:domain blondie:EthereumAccount ;
+                               rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#balanceEthereumAccount
+blondie:balanceEthereumAccount rdf:type owl:DatatypeProperty ;
+                               rdfs:domain blondie:EthereumAccount ;
+                               rdfs:range xsd:decimal ;
+                               rdfs:comment "A scalar value equal to the number of Wei owned by this address." .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#beneficiaryEthereumBlockheader
+blondie:beneficiaryEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain blondie:EthereumBlockheader ;
+                                       rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#codeHashContractEthereumAccount
+blondie:codeHashContractEthereumAccount rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain blondie:ContractEthereumAccount ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "The hash of the EVM code of this account this is the code that gets executed should this address receive a message call; it is immutable and thus, unlike all other fields, cannot be changed after construction. All such code fragments are contained in the state database under their corresponding hashes for later retrieval." .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#dataMessageCallEthereumTransaction
+blondie:dataMessageCallEthereumTransaction rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain blondie:MessageCallEthereumTransaction ;
+                                           rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#difficultyBlockheader
+blondie:difficultyBlockheader rdf:type owl:DatatypeProperty ;
+                              rdfs:domain blondie:Blockheader ;
+                              rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#extraDataEthereumBlockheader
+blondie:extraDataEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain blondie:EthereumBlockheader ;
+                                     rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#gasLimitEthereumBlockheader
+blondie:gasLimitEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain blondie:EthereumBlockheader ;
+                                    rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#gasLimitEthereumTransaction
+blondie:gasLimitEthereumTransaction rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain blondie:EthereumTransaction ;
+                                    rdfs:range xsd:decimal ;
+                                    rdfs:comment "A scalar value equal to the maximum amount of gas that should be used in executing this transaction. This is paid up-front, before any computation is done and may not be increased later." .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#gasPriceEthereumTransaction
+blondie:gasPriceEthereumTransaction rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain blondie:EthereumTransaction ;
+                                    rdfs:range xsd:decimal ;
+                                    rdfs:comment "A scalar value equal to the number of Wei to be paid per unit of gas for all computation costs incurred as a result of the execution of this transaction." .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#gasUsedEthereumBlockheader
+blondie:gasUsedEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain blondie:EthereumBlockheader ;
+                                   rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hashBitcoinTransactionInput
+blondie:hashBitcoinTransactionInput rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain blondie:BitcoinTransactionInput ;
+                                    rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#hashPreviousBlockheader
+blondie:hashPreviousBlockheader rdf:type owl:DatatypeProperty ;
+                                rdfs:domain blondie:Blockheader ;
+                                rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#heightBlock
+blondie:heightBlock rdf:type owl:DatatypeProperty ;
+                    rdfs:domain blondie:Block ;
+                    rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#indexBitcoinTransactionInput
+blondie:indexBitcoinTransactionInput rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain blondie:BitcoinTransactionInput ;
+                                     rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#initContractCreationEthereumTransaction
+blondie:initContractCreationEthereumTransaction rdf:type owl:DatatypeProperty ;
+                                                rdfs:domain blondie:ContractCreationEthereumTransaction ;
+                                                rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#lockTimeBitcoinTransaction
+blondie:lockTimeBitcoinTransaction rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain blondie:BitcoinTransaction ;
+                                   rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#logsBloomEthereumBlockheader
+blondie:logsBloomEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain blondie:EthereumBlockheader ;
+                                     rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#merkleRootBlockheader
+blondie:merkleRootBlockheader rdf:type owl:DatatypeProperty ;
+                              rdfs:domain blondie:Blockheader ;
+                              rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#minerBlock
+blondie:minerBlock rdf:type owl:DatatypeProperty ;
+                   rdfs:domain blondie:Block ;
+                   rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#mixHashEthereumBlockheader
+blondie:mixHashEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain blondie:EthereumBlockheader ;
+                                   rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#nSequenceBitcoinTransactionInput
+blondie:nSequenceBitcoinTransactionInput rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain blondie:BitcoinTransactionInput ;
+                                         rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#nValueBitcoinTransactionOutput
+blondie:nValueBitcoinTransactionOutput rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain blondie:BitcoinTransactionOutput ;
+                                       rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#nonceBlockheader
+blondie:nonceBlockheader rdf:type owl:DatatypeProperty ;
+                         rdfs:domain blondie:Blockheader ;
+                         rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#nonceEthereumAccount
+blondie:nonceEthereumAccount rdf:type owl:DatatypeProperty ;
+                             rdfs:domain blondie:EthereumAccount ;
+                             rdfs:range xsd:decimal ;
+                             rdfs:comment "A scalar value equal to the number of transactions sent from this address or, in the case of accounts with associated code, the number of contract-creations made by this account." .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#nonceEthereumTransaction
+blondie:nonceEthereumTransaction rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain blondie:EthereumTransaction ;
+                                 rdfs:range xsd:decimal ;
+                                 rdfs:comment "A scalar value equal to the number of transactions sent by the sender." .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#numberAncestorsEthereumBlockheader
+blondie:numberAncestorsEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain blondie:EthereumBlockheader ;
+                                           rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#numberInputTransactionsBitcoinTransaction
+blondie:numberInputTransactionsBitcoinTransaction rdf:type owl:DatatypeProperty ;
+                                                  rdfs:domain blondie:BitcoinTransaction ;
+                                                  rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#numberOutputTransactionsBitcoinTransaction
+blondie:numberOutputTransactionsBitcoinTransaction rdf:type owl:DatatypeProperty ;
+                                                   rdfs:domain blondie:BitcoinTransaction ;
+                                                   rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#numberTransactionsBitcoinPayload
+blondie:numberTransactionsBitcoinPayload rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain blondie:BitcoinPayload ;
+                                         rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#omnersHashEthereumBlockheader
+blondie:omnersHashEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain blondie:EthereumBlockheader ;
+                                      rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#rEthereumTransaction
+blondie:rEthereumTransaction rdf:type owl:DatatypeProperty ;
+                             rdfs:domain blondie:EthereumTransaction ;
+                             rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#receiptsRootEthereumBlockheader
+blondie:receiptsRootEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain blondie:EthereumBlockheader ;
+                                        rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#recipientEthereumTransaction
+blondie:recipientEthereumTransaction rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain blondie:EthereumTransaction ;
+                                     rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#sEthereumTransaction
+blondie:sEthereumTransaction rdf:type owl:DatatypeProperty ;
+                             rdfs:domain blondie:EthereumTransaction ;
+                             rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#scriptPubkeyBitcoinTransactionOutput
+blondie:scriptPubkeyBitcoinTransactionOutput rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain blondie:BitcoinTransactionOutput ;
+                                             rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#scriptPubkeyLenBitcoinTransactionOutput
+blondie:scriptPubkeyLenBitcoinTransactionOutput rdf:type owl:DatatypeProperty ;
+                                                rdfs:domain blondie:BitcoinTransactionOutput ;
+                                                rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#scriptSigLenBitcoinTransactionInput
+blondie:scriptSigLenBitcoinTransactionInput rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain blondie:BitcoinTransactionInput ;
+                                            rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#scriptSignBitcoinTransactionInput
+blondie:scriptSignBitcoinTransactionInput rdf:type owl:DatatypeProperty ;
+                                          rdfs:domain blondie:BitcoinTransactionInput ;
+                                          rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#senderTransaction
+blondie:senderTransaction rdf:type owl:DatatypeProperty ;
+                          rdfs:domain blondie:Transaction ;
+                          rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#stateBlock
+blondie:stateBlock rdf:type owl:DatatypeProperty ;
+                   rdfs:domain blondie:Block ;
+                   rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#storageRootContractEthereumAccount
+blondie:storageRootContractEthereumAccount rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain blondie:ContractEthereumAccount ;
+                                           rdfs:range xsd:string ;
+                                           rdfs:comment """A 256-bit hash of the root node of a Merkle Patricia tree that encodes the storage contents
+of the account (a mapping between 256-bit integer values), encoded into the trie as a mapping
+from the Keccak 256-bit hash of the 256-bit integer keys to the RLP-encoded 256-bit integer values.""" .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#timestampBlockheader
+blondie:timestampBlockheader rdf:type owl:DatatypeProperty ;
+                             rdfs:domain blondie:Blockheader ;
+                             rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#totalCoinsBlock
+blondie:totalCoinsBlock rdf:type owl:DatatypeProperty ;
+                        rdfs:domain blondie:Block ;
+                        rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#totalTransactionsBlock
+blondie:totalTransactionsBlock rdf:type owl:DatatypeProperty ;
+                               rdfs:domain blondie:Block ;
+                               rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#transactionRootEthereumBlockheader
+blondie:transactionRootEthereumBlockheader rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain blondie:EthereumBlockheader ;
+                                           rdfs:range xsd:string .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#vEthereumTransaction
+blondie:vEthereumTransaction rdf:type owl:DatatypeProperty ;
+                             rdfs:domain blondie:EthereumTransaction ;
+                             rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#valueEthereumTransaction
+blondie:valueEthereumTransaction rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain blondie:EthereumTransaction ;
+                                 rdfs:range xsd:decimal ;
+                                 rdfs:comment "A scalar value equal to the number of Wei to be transferred to the message call's recipient or, in the case of contract creation, as an endowment to the newly created account" .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#versionBitcoinBlockheader
+blondie:versionBitcoinBlockheader rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain blondie:BitcoinBlockheader ;
+                                  rdfs:range xsd:decimal .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#versionBitcoinTransaction
+blondie:versionBitcoinTransaction rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain blondie:BitcoinTransaction ;
+                                  rdfs:range xsd:decimal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticblockchain.com/Blondie.owl#BitcoinBlock
+blondie:BitcoinBlock rdf:type owl:Class ;
+                     rdfs:subClassOf blondie:Block ;
+                     owl:disjointWith blondie:EthereumBlock ;
+                     rdfs:comment "Bitcoin block." .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#BitcoinBlockheader
+blondie:BitcoinBlockheader rdf:type owl:Class ;
+                           rdfs:subClassOf blondie:Blockheader ;
+                           owl:disjointWith blondie:EthereumBlockheader ;
+                           rdfs:comment "An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#BitcoinPayload
+blondie:BitcoinPayload rdf:type owl:Class ;
+                       rdfs:subClassOf blondie:Payload ;
+                       owl:disjointWith blondie:EthereumPayload .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#BitcoinTransaction
+blondie:BitcoinTransaction rdf:type owl:Class ;
+                           rdfs:subClassOf blondie:Transaction ;
+                           owl:disjointWith blondie:EthereumTransaction .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#BitcoinTransactionInput
+blondie:BitcoinTransactionInput rdf:type owl:Class ;
+                                rdfs:comment "Bitcoin input transaction" .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#BitcoinTransactionOutput
+blondie:BitcoinTransactionOutput rdf:type owl:Class ;
+                                 rdfs:comment "Bitcoin output transaction" .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#Block
+blondie:Block rdf:type owl:Class ;
+              rdfs:comment "Set of transactions with the same timestamp." .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#Blockheader
+blondie:Blockheader rdf:type owl:Class ;
+                    rdfs:comment "" .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#ContractCreationEthereumTransaction
+blondie:ContractCreationEthereumTransaction rdf:type owl:Class ;
+                                            rdfs:subClassOf blondie:EthereumTransaction .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#ContractEthereumAccount
+blondie:ContractEthereumAccount rdf:type owl:Class ;
+                                rdfs:subClassOf blondie:EthereumAccount ;
+                                owl:disjointWith blondie:NormalAccount .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#EthereumAccount
+blondie:EthereumAccount rdf:type owl:Class .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#EthereumBlock
+blondie:EthereumBlock rdf:type owl:Class ;
+                      rdfs:subClassOf blondie:Block ;
+                      rdfs:comment "Ethereum block" .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#EthereumBlockheader
+blondie:EthereumBlockheader rdf:type owl:Class ;
+                            rdfs:subClassOf blondie:Blockheader .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#EthereumOmmerBlockheader
+blondie:EthereumOmmerBlockheader rdf:type owl:Class ;
+                                 rdfs:subClassOf blondie:EthereumBlockheader .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#EthereumPayload
+blondie:EthereumPayload rdf:type owl:Class ;
+                        rdfs:subClassOf blondie:Payload .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#EthereumTransaction
+blondie:EthereumTransaction rdf:type owl:Class ;
+                            rdfs:subClassOf blondie:Transaction .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#MessageCallEthereumTransaction
+blondie:MessageCallEthereumTransaction rdf:type owl:Class ;
+                                       rdfs:subClassOf blondie:EthereumTransaction .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#NormalAccount
+blondie:NormalAccount rdf:type owl:Class ;
+                      rdfs:subClassOf blondie:EthereumAccount .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#NormalEthereumTransaction
+blondie:NormalEthereumTransaction rdf:type owl:Class ;
+                                  rdfs:subClassOf blondie:EthereumTransaction .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#Payload
+blondie:Payload rdf:type owl:Class .
+
+
+###  http://www.semanticblockchain.com/Blondie.owl#Transaction
+blondie:Transaction rdf:type owl:Class .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( blondie:BitcoinTransactionInput
+                blondie:BitcoinTransactionOutput
+                blondie:Block
+                blondie:Blockheader
+                blondie:EthereumAccount
+                blondie:EthereumOmmerBlockheader
+                blondie:Payload
+                blondie:Transaction
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( blondie:BitcoinTransactionInput
+                blondie:BitcoinTransactionOutput
+                blondie:Block
+                blondie:Blockheader
+                blondie:EthereumAccount
+                blondie:Payload
+                blondie:Transaction
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( blondie:ContractCreationEthereumTransaction
+                blondie:MessageCallEthereumTransaction
+                blondie:NormalEthereumTransaction
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi

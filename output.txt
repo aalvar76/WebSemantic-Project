@@ -1,0 +1,395 @@
+@prefix : <http://www.semanticblockchain.com/Blondie.owl#> .
+@prefix CS-586: <CS-586#> .
+@prefix blondie: <http://www.semanticblockchain.com/Blondie.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+CS-586:block_68731930xe994b9fe1eecbe95cddbaf3608cceb772aa4fbd4e83ede700f63d3f27ec833e2 a blondie:EthereumBlock ;
+    blondie:hasEthereumBlockheaderBlock CS-586:block_header68731930xe994b9fe1eecbe95cddbaf3608cceb772aa4fbd4e83ede700f63d3f27ec833e2 .
+
+<http://www.semanticblockchain.com/Blondie.owl> a owl:Ontology ;
+    rdfs:comment "Blockchain Ontology with Dynamic Extensibilty - An ontology for describing blockchain structure and related information"@en .
+
+blondie:addressEthereumAccount a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumAccount ;
+    rdfs:range xsd:string .
+
+blondie:balanceEthereumAccount a owl:DatatypeProperty ;
+    rdfs:comment "A scalar value equal to the number of Wei owned by this address." ;
+    rdfs:domain blondie:EthereumAccount ;
+    rdfs:range xsd:decimal .
+
+blondie:beneficiaryEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:string .
+
+blondie:block_12251455 a blondie:EthereumBlock,
+        owl:NamedIndividual ;
+    blondie:heightBlock 65255 .
+
+blondie:codeHashContractEthereumAccount a owl:DatatypeProperty ;
+    rdfs:comment "The hash of the EVM code of this account this is the code that gets executed should this address receive a message call; it is immutable and thus, unlike all other fields, cannot be changed after construction. All such code fragments are contained in the state database under their corresponding hashes for later retrieval." ;
+    rdfs:domain blondie:ContractEthereumAccount ;
+    rdfs:range xsd:string .
+
+blondie:dataMessageCallEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:MessageCallEthereumTransaction ;
+    rdfs:range xsd:string .
+
+blondie:difficultyBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:Blockheader ;
+    rdfs:range xsd:decimal .
+
+blondie:extraDataEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:string .
+
+blondie:gasLimitEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:decimal .
+
+blondie:gasLimitEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:comment "A scalar value equal to the maximum amount of gas that should be used in executing this transaction. This is paid up-front, before any computation is done and may not be increased later." ;
+    rdfs:domain blondie:EthereumTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:gasPriceEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:comment "A scalar value equal to the number of Wei to be paid per unit of gas for all computation costs incurred as a result of the execution of this transaction." ;
+    rdfs:domain blondie:EthereumTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:gasUsedEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:decimal .
+
+blondie:hasBitcoinBlockheaderBlock a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:BitcoinBlock ;
+    rdfs:range blondie:BitcoinBlockheader .
+
+blondie:hasBitcoinPayloadBlock a owl:FunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:BitcoinBlock ;
+    rdfs:range blondie:BitcoinPayload .
+
+blondie:hasBitcoinTransactionInput a owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:BitcoinTransaction ;
+    rdfs:range blondie:BitcoinTransactionInput .
+
+blondie:hasBitcoinTransactionOutput a owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:BitcoinTransaction ;
+    rdfs:range blondie:BitcoinTransactionOutput .
+
+blondie:hasBlockheaderBlock a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:Block ;
+    rdfs:range blondie:Blockheader .
+
+blondie:hasEthereumBlockheaderBlock a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:EthereumBlock ;
+    rdfs:range blondie:EthereumBlockheader .
+
+blondie:hasEthereumPayloadBlock a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:EthereumBlock ;
+    rdfs:range blondie:EthereumPayload .
+
+blondie:hasEthereumTransactionPayload a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:EthereumPayload ;
+    rdfs:range blondie:EthereumTransaction .
+
+blondie:hasOmmerEthereumPayload a owl:FunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:EthereumPayload ;
+    rdfs:range blondie:EthereumOmmerBlockheader .
+
+blondie:hasPayloadBlock a owl:AsymmetricProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:Block ;
+    rdfs:range blondie:Payload .
+
+blondie:hasTransactionPayload a owl:FunctionalProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:domain blondie:Payload ;
+    rdfs:range blondie:Transaction .
+
+blondie:hashBitcoinTransactionInput a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransactionInput ;
+    rdfs:range xsd:string .
+
+blondie:hashPreviousBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:Blockheader ;
+    rdfs:range xsd:string .
+
+blondie:heightBlock a owl:DatatypeProperty ;
+    rdfs:domain blondie:Block ;
+    rdfs:range xsd:decimal .
+
+blondie:indexBitcoinTransactionInput a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransactionInput ;
+    rdfs:range xsd:decimal .
+
+blondie:initContractCreationEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:ContractCreationEthereumTransaction ;
+    rdfs:range xsd:string .
+
+blondie:lockTimeBitcoinTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:logsBloomEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:string .
+
+blondie:merkleRootBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:Blockheader ;
+    rdfs:range xsd:string .
+
+blondie:minerBlock a owl:DatatypeProperty ;
+    rdfs:domain blondie:Block ;
+    rdfs:range xsd:string .
+
+blondie:mixHashEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:string .
+
+blondie:nSequenceBitcoinTransactionInput a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransactionInput ;
+    rdfs:range xsd:decimal .
+
+blondie:nValueBitcoinTransactionOutput a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransactionOutput ;
+    rdfs:range xsd:decimal .
+
+blondie:nonceBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:Blockheader ;
+    rdfs:range xsd:decimal .
+
+blondie:nonceEthereumAccount a owl:DatatypeProperty ;
+    rdfs:comment "A scalar value equal to the number of transactions sent from this address or, in the case of accounts with associated code, the number of contract-creations made by this account." ;
+    rdfs:domain blondie:EthereumAccount ;
+    rdfs:range xsd:decimal .
+
+blondie:nonceEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:comment "A scalar value equal to the number of transactions sent by the sender." ;
+    rdfs:domain blondie:EthereumTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:numberAncestorsEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:decimal .
+
+blondie:numberInputTransactionsBitcoinTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:numberOutputTransactionsBitcoinTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:numberTransactionsBitcoinPayload a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinPayload ;
+    rdfs:range xsd:decimal .
+
+blondie:omnersHashEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:string .
+
+blondie:rEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:receiptsRootEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:string .
+
+blondie:recipientEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumTransaction ;
+    rdfs:range xsd:string .
+
+blondie:sEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:scriptPubkeyBitcoinTransactionOutput a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransactionOutput ;
+    rdfs:range xsd:string .
+
+blondie:scriptPubkeyLenBitcoinTransactionOutput a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransactionOutput ;
+    rdfs:range xsd:string .
+
+blondie:scriptSigLenBitcoinTransactionInput a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransactionInput ;
+    rdfs:range xsd:string .
+
+blondie:scriptSignBitcoinTransactionInput a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransactionInput ;
+    rdfs:range xsd:string .
+
+blondie:senderTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:Transaction ;
+    rdfs:range xsd:string .
+
+blondie:stateBlock a owl:DatatypeProperty ;
+    rdfs:domain blondie:Block ;
+    rdfs:range xsd:string .
+
+blondie:storageRootContractEthereumAccount a owl:DatatypeProperty ;
+    rdfs:comment """A 256-bit hash of the root node of a Merkle Patricia tree that encodes the storage contents
+of the account (a mapping between 256-bit integer values), encoded into the trie as a mapping
+from the Keccak 256-bit hash of the 256-bit integer keys to the RLP-encoded 256-bit integer values.""" ;
+    rdfs:domain blondie:ContractEthereumAccount ;
+    rdfs:range xsd:string .
+
+blondie:timestampBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:Blockheader ;
+    rdfs:range xsd:decimal .
+
+blondie:totalCoinsBlock a owl:DatatypeProperty ;
+    rdfs:domain blondie:Block ;
+    rdfs:range xsd:decimal .
+
+blondie:totalTransactionsBlock a owl:DatatypeProperty ;
+    rdfs:domain blondie:Block ;
+    rdfs:range xsd:decimal .
+
+blondie:transactionRootEthereumBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumBlockheader ;
+    rdfs:range xsd:string .
+
+blondie:vEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:EthereumTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:valueEthereumTransaction a owl:DatatypeProperty ;
+    rdfs:comment "A scalar value equal to the number of Wei to be transferred to the message call's recipient or, in the case of contract creation, as an endowment to the newly created account" ;
+    rdfs:domain blondie:EthereumTransaction ;
+    rdfs:range xsd:decimal .
+
+blondie:versionBitcoinBlockheader a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinBlockheader ;
+    rdfs:range xsd:decimal .
+
+blondie:versionBitcoinTransaction a owl:DatatypeProperty ;
+    rdfs:domain blondie:BitcoinTransaction ;
+    rdfs:range xsd:decimal .
+
+CS-586:block_header68731930xe994b9fe1eecbe95cddbaf3608cceb772aa4fbd4e83ede700f63d3f27ec833e2 a blondie:EthereumBlockheader ;
+    blondie:difficultyBlockheader 2275247500395228 ;
+    blondie:extraDataEthereumBlockheader "七彩神仙鱼" ;
+    blondie:gasLimitEthereumBlockheader 8000000 ;
+    blondie:gasUsedEthereumBlockheader 7547218 ;
+    blondie:hashPreviousBlockheader "0xe0f70aa49116cc010bfa4111f5fdda7f3fb188c19596ad94555bc2f04b1bc576" ;
+    blondie:logsBloomEthereumBlockheader "0x14101c8002517b08ae421011452b28108101f03260aa801d2142006c0260504886c01460bc41284b214cc443830010ddcb00252208251751e02ca500406902d246006908080a0464a0e0102c0401e40052e920089c302102810321010380e660808180e30e2055878264203200068c7000449921083024e2a025487c480c62812000aa31c05c18b1060425838501040a5441872111000a0e050004270883320053380008513800804e240910a9358000aa10040b1802832000059c013a9a6548e3940202010da14102180e4ae6a144c24400462cc3a0ed052890002018226041847120010055831aa01a0a34ac32149f4020048a655d183e40484a32083f6184" ;
+    blondie:mixHashEthereumBlockheader "0xfae55e552cf5d13dd6762d70b70da9ebfbf96b2856c2f4c91beb09940a8576c7" ;
+    blondie:numberAncestorsEthereumBlockheader 6873193 ;
+    blondie:receiptsRootEthereumBlockheader "0x569920e516b93d1fa3da0f7d81ef7dbd5098a7f0ad3ff7cbd6d514d7809751b4" ;
+    blondie:timestampBlockheader 1544621486 ;
+    blondie:transactionRootEthereumBlockheader "0x9e6f28912d929041ee705e7266f3f60792ababba953fd2922e2815d4b669fdcf" .
+
+blondie:NormalAccount a owl:Class ;
+    rdfs:subClassOf blondie:EthereumAccount .
+
+blondie:NormalEthereumTransaction a owl:Class ;
+    rdfs:subClassOf blondie:EthereumTransaction .
+
+blondie:BitcoinBlock a owl:Class ;
+    rdfs:comment "Bitcoin block." ;
+    rdfs:subClassOf blondie:Block ;
+    owl:disjointWith blondie:EthereumBlock .
+
+blondie:BitcoinBlockheader a owl:Class ;
+    rdfs:comment "An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." ;
+    rdfs:subClassOf blondie:Blockheader ;
+    owl:disjointWith blondie:EthereumBlockheader .
+
+blondie:BitcoinPayload a owl:Class ;
+    rdfs:subClassOf blondie:Payload ;
+    owl:disjointWith blondie:EthereumPayload .
+
+blondie:ContractCreationEthereumTransaction a owl:Class ;
+    rdfs:subClassOf blondie:EthereumTransaction .
+
+blondie:ContractEthereumAccount a owl:Class ;
+    rdfs:subClassOf blondie:EthereumAccount ;
+    owl:disjointWith blondie:NormalAccount .
+
+blondie:EthereumOmmerBlockheader a owl:Class ;
+    rdfs:subClassOf blondie:EthereumBlockheader .
+
+blondie:MessageCallEthereumTransaction a owl:Class ;
+    rdfs:subClassOf blondie:EthereumTransaction .
+
+blondie:EthereumPayload a owl:Class ;
+    rdfs:subClassOf blondie:Payload .
+
+blondie:EthereumBlock a owl:Class ;
+    rdfs:comment "Ethereum block" ;
+    rdfs:subClassOf blondie:Block .
+
+blondie:BitcoinTransaction a owl:Class ;
+    rdfs:subClassOf blondie:Transaction ;
+    owl:disjointWith blondie:EthereumTransaction .
+
+blondie:BitcoinTransactionOutput a owl:Class ;
+    rdfs:comment "Bitcoin output transaction" .
+
+blondie:Payload a owl:Class .
+
+blondie:Transaction a owl:Class .
+
+blondie:EthereumAccount a owl:Class .
+
+blondie:BitcoinTransactionInput a owl:Class ;
+    rdfs:comment "Bitcoin input transaction" .
+
+blondie:Blockheader a owl:Class ;
+    rdfs:comment "" .
+
+blondie:Block a owl:Class ;
+    rdfs:comment "Set of transactions with the same timestamp." .
+
+blondie:EthereumTransaction a owl:Class ;
+    rdfs:subClassOf blondie:Transaction .
+
+blondie:EthereumBlockheader a owl:Class ;
+    rdfs:subClassOf blondie:Blockheader .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( blondie:BitcoinTransactionInput blondie:BitcoinTransactionOutput blondie:Block blondie:Blockheader blondie:EthereumAccount blondie:EthereumOmmerBlockheader blondie:Payload blondie:Transaction ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( blondie:BitcoinTransactionInput blondie:BitcoinTransactionOutput blondie:Block blondie:Blockheader blondie:EthereumAccount blondie:Payload blondie:Transaction ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( blondie:ContractCreationEthereumTransaction blondie:MessageCallEthereumTransaction blondie:NormalEthereumTransaction ) .
+
